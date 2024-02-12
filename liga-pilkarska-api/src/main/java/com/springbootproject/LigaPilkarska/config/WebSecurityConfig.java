@@ -56,7 +56,7 @@ public class WebSecurityConfig {
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests((auth -> auth
                         .requestMatchers(WHITE_LIST_URLS).permitAll()
-                        .requestMatchers(HttpMethod.GET ,"/api/**").authenticated()
+                        .requestMatchers(/*HttpMethod.GET ,*/"/api/**").permitAll()
                         .anyRequest().hasRole("ADMIN")))
                 .authenticationManager(authenticationManager)
                 .formLogin(Customizer.withDefaults())
