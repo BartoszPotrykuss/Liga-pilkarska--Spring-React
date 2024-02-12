@@ -13,4 +13,6 @@ public interface PlayerService {
     void deletePlayerById(Long id);
 
     Player updatePlayer(Long id, Player player);
+
+    List<Player> getPlayersByTeamId(Long id);
 }

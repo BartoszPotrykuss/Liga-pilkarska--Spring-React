@@ -36,7 +36,7 @@ public class Match {
     private LocalDate date;
     private String location;
 
-    @JsonIgnoreProperties("matches")
+    @JsonIgnoreProperties({"matches", "country", "coach", "players"})
     @ManyToMany(
             cascade = CascadeType.MERGE
     )

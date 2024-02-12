@@ -12,8 +12,12 @@ import java.util.Optional;
 @Service
 public class TeamServiceimpl implements TeamService {
 
-    @Autowired
-    private TeamRepository teamRepository;
+    private final TeamRepository teamRepository;
+
+    public TeamServiceimpl(TeamRepository teamRepository) {
+        this.teamRepository = teamRepository;
+    }
+
 
     @Override
     public Team saveTeam(Team team) {

@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class PlayerController {
 
-    @Autowired
-    private PlayerService playerService;
+    private final PlayerService playerService;
 
+    public PlayerController(PlayerService playerService) {
+        this.playerService = playerService;
+    }
     @PostMapping("/player")
     public Player savePlayer(@Valid @RequestBody Player player) {
         return playerService.savePlayer(player);
@@ -24,6 +27,12 @@ public class PlayerController {
     public List<Player> getPlayers() {
         return playerService.getPlayers();
     }
+
+    @GetMapping("/player/team/id/{id}")
+    public List<Player> getPlayersByTeamId(@PathVariable("id") Long id) {
+        return playerService.getPlayersByTeamId(id);
+    }
+
 
     @DeleteMapping("/player/{id}")
     public String deletePlayerById(@PathVariable("id") Long id) {

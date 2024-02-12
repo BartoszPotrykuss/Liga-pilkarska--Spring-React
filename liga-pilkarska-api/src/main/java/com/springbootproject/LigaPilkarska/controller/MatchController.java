@@ -9,10 +9,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class MatchController {
 
-    @Autowired
-    private MatchService matchService;
+    private final MatchService matchService;
+
+    public MatchController(MatchService matchService) {
+        this.matchService = matchService;
+    }
 
     @PostMapping("/match")
     public Match saveMatch(@Valid @RequestBody Match match) {

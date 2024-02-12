@@ -39,13 +39,14 @@ public class Team {
     )
     private Coach coach;
 
-    @JsonIgnoreProperties("team")
+    @JsonIgnoreProperties("players")
     @OneToMany(
             mappedBy = "team",
             cascade = CascadeType.ALL
     )
     private List<Player> players;
 
+    @JsonIgnoreProperties("matches")
     @ManyToMany(mappedBy = "teams")
     private List<Match> matches;
 }

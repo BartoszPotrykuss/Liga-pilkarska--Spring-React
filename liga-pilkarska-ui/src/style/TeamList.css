@@ -25,7 +25,7 @@ th {
     color: #fff;
 }
 
-td a {
+td button {
             display: inline-block;
             text-decoration: none;
             color: #fff;
@@ -35,6 +35,6 @@ td a {
             transition: background-color 0.3s ease;
 }
 
-td a:hover {
+td button:hover {
     background-color: #5e6244;
 }

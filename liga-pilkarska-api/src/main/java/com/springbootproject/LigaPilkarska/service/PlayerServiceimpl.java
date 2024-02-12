@@ -14,12 +14,13 @@ import java.util.Objects;
 @Service
 public class PlayerServiceimpl implements PlayerService{
 
-    @Autowired
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
+    private final TeamRepository teamRepository;
 
-    @Autowired
-    private TeamRepository teamRepository;
-
+    public PlayerServiceimpl(PlayerRepository playerRepository, TeamRepository teamRepository) {
+        this.playerRepository = playerRepository;
+        this.teamRepository = teamRepository;
+    }
     @Override
     public Player savePlayer(Player player) {
         return playerRepository.save(player);
@@ -61,4 +62,10 @@ public class PlayerServiceimpl implements PlayerService{
         }
         return null;
     }
+
+    @Override
+    public List<Player> getPlayersByTeamId(Long id) {
+        return playerRepository.findByTeamId_Id(id);
+    }
+
 }

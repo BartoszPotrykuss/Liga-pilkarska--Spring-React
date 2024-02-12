@@ -4,8 +4,8 @@ import '../style/NavBar.css'
 const NavBar = () => {
     return (
         <nav>
-            <a href="#">Dodaj drużynę</a>
-            <a href="#">Lista drużyn</a>
+            <a href="/addTeam">Dodaj drużynę</a>
+            <a href="/teamList">Lista drużyn</a>
         </nav>
     )
 }

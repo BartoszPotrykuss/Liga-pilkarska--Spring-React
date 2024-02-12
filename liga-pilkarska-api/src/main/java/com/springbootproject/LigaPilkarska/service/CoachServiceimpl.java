@@ -13,11 +13,13 @@ import java.util.Objects;
 @Service
 public class CoachServiceimpl implements CoachService {
 
-    @Autowired
-    private CoachRepository coachRepository;
+    private final CoachRepository coachRepository;
+    private final TeamRepository teamRepository;
 
-    @Autowired
-    private TeamRepository teamRepository;
+    public CoachServiceimpl(CoachRepository coachRepository, TeamRepository teamRepository) {
+        this.coachRepository = coachRepository;
+        this.teamRepository = teamRepository;
+    }
 
 
     @Override

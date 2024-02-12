@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class CoachController {
 
-    @Autowired
-    private CoachService coachService;
+    private final CoachService coachService;
+
+    public CoachController(CoachService coachService) {
+        this.coachService = coachService;
+    }
 
     @PostMapping("/coach")
     public Coach saveCoach(@Valid @RequestBody Coach coach) {

@@ -29,7 +29,7 @@ public class Coach {
     private String lastName;
 
 
-    @JsonIgnoreProperties("coach")
+    @JsonIgnoreProperties({"coach", "players", "country", "matches"})
     @OneToOne(
             cascade = CascadeType.MERGE
     )

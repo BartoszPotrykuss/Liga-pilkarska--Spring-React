@@ -8,11 +8,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
+@RequestMapping("/api")
 public class TeamController {
 
-    @Autowired
-    private TeamService teamService;
+    private final TeamService teamService;
+
+    public TeamController(TeamService teamService) {
+        this.teamService = teamService;
+    }
 
     @PostMapping("/team")
     public Team saveTeam(@Valid @RequestBody Team team) {

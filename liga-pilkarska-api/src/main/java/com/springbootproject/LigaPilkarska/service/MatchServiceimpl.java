@@ -11,8 +11,11 @@ import java.util.Objects;
 @Service
 public class MatchServiceimpl implements MatchService {
 
-    @Autowired
-    private MatchRepository matchRepository;
+    private final MatchRepository matchRepository;
+
+    public MatchServiceimpl(MatchRepository matchRepository) {
+        this.matchRepository = matchRepository;
+    }
 
     @Override
     public List<Match> getMatches() {
