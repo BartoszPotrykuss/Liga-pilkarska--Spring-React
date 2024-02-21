@@ -8,13 +8,15 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
-public class PlayerService {
+public class PlayerServiceTest {
 
   @Mock
   private PlayerRepository playerRepository;
@@ -36,5 +38,18 @@ public class PlayerService {
 
         //Assert
         assertThat(savedPlayer).isNotNull();
+  }
+
+  @Test
+  public void PlayerService_GetPlayers_ReturnsPlayers() {
+    //Arrange
+    List<Player> players = mock(List.class);
+    when(playerRepository.findAll()).thenReturn(players);
+
+    //Act
+    List<Player> savePlayers = playerService.getPlayers();
+
+    //Assert
+    assertThat(savePlayers).isNotNull();
   }
 }
