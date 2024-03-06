@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -51,5 +52,23 @@ public class PlayerServiceTest {
 
     //Assert
     assertThat(savePlayers).isNotNull();
+  }
+
+  @Test
+  public void PlayerService_UpdatePlayer_ReturnsPlayer() {
+    //Arrange
+    Player player1 = Player.builder()
+            .name("Yamal")
+            .position("attacker")
+            .build();
+    when(playerRepository.findById(1L))
+            .thenReturn(Optional.ofNullable(player1));
+    when(playerRepository.save(Mockito.any(Player.class)))
+            .thenReturn(player1);
+
+    assert  player1 != null;
+    Player savedPlayer = playerService.updatePlayer(1L, player1);
+
+    assertThat(savedPlayer).isNotNull();
   }
 }
